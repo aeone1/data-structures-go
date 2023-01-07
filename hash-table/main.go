@@ -32,6 +32,10 @@ type bucketNode struct {
 // Insert will take in a key and add it to the hash table array
 func (h *HashTable) Insert(key string) {
 	index := hash(key)
+	// Creating buckets when they are needed instead of InitHashTable()
+	if h.array[index] == nil {
+		h.array[index] = &bucket{}
+	}
 	h.array[index].Insert(key)
 }
 
@@ -107,8 +111,8 @@ func hash(key string) int {
 	return sum % ArraySize
 }
 
-// Init will create a bucket in each slot of the hash table
-func Init() *HashTable {
+// InitHashTable will create a bucket in each slot of the hash table
+func InitHashTable() *HashTable {
 	result := &HashTable{}
 	for i := range result.array {
 		result.array[i] = &bucket{}
@@ -117,7 +121,9 @@ func Init() *HashTable {
 }
 
 func main() {
-	hashTable := Init()
+	// hashTable := InitHashTable()
+	hashTable := &HashTable{}
+	fmt.Println(hashTable)
 	list := []string{
 		"ERIC",
 		"KENNY",
@@ -135,4 +141,5 @@ func main() {
 	fmt.Println(hashTable.Search("STAN"))
 	fmt.Println(hashTable.Search("TOLKEN"))
 	fmt.Println(hashTable.Search("PETER"))
+	fmt.Println(hashTable)
 }

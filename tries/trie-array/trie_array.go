@@ -1,4 +1,4 @@
-package array_trie
+package trie_array
 
 const AlphabetSize = 26
 
@@ -42,6 +42,6 @@ func (t *Trie) Search(w string) bool {
 }
 
 // Initialize a trie
-func InitArrayTrie() *Trie {
+func InitTrie() *Trie {
 	return &Trie{root: &Node{}}
 }

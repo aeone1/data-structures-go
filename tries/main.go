@@ -2,19 +2,29 @@ package main
 
 import (
 	"fmt"
-	"github.com/aeone1/data-structures-go/tries/array-trie/array_trie"
+	arrayTrie "github.com/aeone1/data-structures-go/tries/trie-array"
+	mapTrie "github.com/aeone1/data-structures-go/tries/trie-map"
 )
 
 // Re[trie]ve is a effiecient data structure
 // for storing and retieving words
 
 func main() {
-	myTrie := InitArrayTrie()
+	myArrayTrie := arrayTrie.InitTrie()
 	
-	myTrie.Insert("aragon")
-	myTrie.Insert("a")
+	myArrayTrie.Insert("aragon")
+	myArrayTrie.Insert("a")
 
-	fmt.Println(myTrie.Search("aragon"))
-	fmt.Println(myTrie.Search("arag"))
-	fmt.Println(myTrie.Search("a"))
+	fmt.Println(myArrayTrie.Search("aragon"))
+	fmt.Println(myArrayTrie.Search("arag"))
+	fmt.Println(myArrayTrie.Search("a"))
+
+	myMapTrie := mapTrie.InitTrie()
+	
+	myMapTrie.Insert("aragon")
+	myMapTrie.Insert("a")
+
+	fmt.Println(myMapTrie.Search("aragon"))
+	fmt.Println(myMapTrie.Search("arag"))
+	fmt.Println(myMapTrie.Search("a"))
 }
